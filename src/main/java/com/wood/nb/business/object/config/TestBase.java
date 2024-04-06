@@ -18,8 +18,12 @@ public class TestBase {
         WebDriverFactory.setDriver(driver);
         driver.navigate().to(url);
         WebDriverFactory.setWait(new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(timeOut))));
-    }
 
+        driver.get(url);
+        driver.manage().window().maximize();
+        WebDriverFactory.setDriver(driver);
+        WebDriverFactory.setWait(new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(timeOut))));
+    }
     @AfterClass(alwaysRun = true)
     public void close(){
         WebDriverFactory.getDriver().close();
